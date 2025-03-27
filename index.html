@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slika sa srcem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    img {
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: width 0.3s, height 0.3s;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background-color: #dc2626;
+      transform: scale(1.05);
+    }
+    button:active {
+      transform: scale(0.95);
+    }
+    button span {
+      margin-left: 8px;
+    }
+    .counter {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Euroje</h1>
+  <img id="friendImage" src="Hrc1.jpeg" alt="Hrc" width="200" height="200">
+  <button id="heartButton">
+    ❤️ <span>Love me</span>
+  </button>
+  <div id="clickCounter" class="counter">Number of clicks: 0</div>
+
+  <script>
+    const image = document.getElementById('friendImage');
+    const button = document.getElementById('heartButton');
+    const counter = document.getElementById('clickCounter');
+    let currentSize = 200; // Početna veličina
+    const maxSize = 500;   // Maksimalna veličina
+    let clickCount = 0;    // Broj klikova
+
+    button.addEventListener('click', () => {
+      if (currentSize < maxSize) {
+        currentSize += 20; // Povećava veličinu za 20px po kliku
+        image.style.width = currentSize + 'px';
+        image.style.height = currentSize + 'px';
+      }
+
+      clickCount++; // Povećaj broj klikova
+      counter.textContent = `${clickCount}`;
+    });
+  </script>
+</body>
+</html>
